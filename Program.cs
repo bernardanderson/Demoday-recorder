@@ -23,6 +23,7 @@ namespace demoday_record
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()
                 .UseStartup<Startup>()
+                .UseUrls("http://*:5001") //Change this to a static IP if needed or adjust the port
                 .Build();
 
             host.Run();
