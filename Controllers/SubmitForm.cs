@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using demoday_record.Models;
+using demoday_record.DAL;
 
 namespace demoday_record.Controllers
 {
@@ -12,15 +13,17 @@ namespace demoday_record.Controllers
         [HttpPost]
         public IActionResult Upload([FromForm]Attendee sentAttendee, string submitform)
         {
+            DemodayRecordRepository newDemodayRepo = new DemodayRecordRepository();
+
+            sentAttendee.EntryTime = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+            newDemodayRepo.AddUserInformation(sentAttendee);
+
             if (submitform == "withpic")
             {
-                return Ok(sentAttendee + submitform);
+
             }
-            else
-            {
-                //return Ok(sentAttendee + submitform);
-                return RedirectToAction("ThankYou", "Home");
-            }
+
+            return RedirectToAction("ThankYou", "Home");
         }
     }
 }

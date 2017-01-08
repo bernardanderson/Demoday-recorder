@@ -11,6 +11,6 @@ namespace demoday_record.Models
         public string AttendeeName { get; set; }
         public string Email { get; set; }
         public string Organization { get; set; }
-        public DateTime EntryTime { get; set; }
+        public long EntryTime { get; set; }
     }
 }

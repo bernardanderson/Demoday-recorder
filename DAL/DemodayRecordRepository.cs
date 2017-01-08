@@ -1,4 +1,5 @@
-﻿using System;
+﻿using demoday_record.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,5 +18,13 @@ namespace demoday_record.DAL
             //  If the Db exists, this does nothing and returns false.
             Context.Database.EnsureCreated();
         }
+
+        public void AddUserInformation(Attendee sentAttendee)
+        {
+            Context.Add(sentAttendee);
+            Context.SaveChanges();
+        }
+
+        public void 
     }
 }
