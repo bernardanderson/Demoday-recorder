@@ -8,7 +8,7 @@ namespace demoday_record.Models
         [Key]
         public int PhotoId { get; set; }
         public string Filename { get; set; }
-        public DateTime CreationDate { get; set; }
+        public long CreationTime { get; set; }
         public virtual Attendee Attendee { get; set; }
     }
 }
