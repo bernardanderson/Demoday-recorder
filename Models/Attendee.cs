@@ -8,6 +8,8 @@ namespace demoday_record.Models
 {
     public class Attendee
     {
+        [Key]
+        public int AttendeeId { get; set; }
         public string AttendeeName { get; set; }
         public string Email { get; set; }
         public string Organization { get; set; }

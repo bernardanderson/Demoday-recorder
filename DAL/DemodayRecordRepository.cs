@@ -25,6 +25,17 @@ namespace demoday_record.DAL
             Context.SaveChanges();
         }
 
-        public void 
+        public void SavePhotoFileAndDbEntry(Attendee sentAttendee)
+        {
+            Attendee dbAttendee = Context.Attendees.FirstOrDefault(a => a.AttendeeName == sentAttendee.AttendeeName);
+            Photo builtPhoto = new Photo
+            {
+                Filename = dbAttendee.EntryTime.ToString(),
+                CreationTime = dbAttendee.EntryTime,
+                Attendee = dbAttendee
+            };
+            Context.Add(builtPhoto);
+            Context.SaveChanges();
+        }
     }
 }

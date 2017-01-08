@@ -11,16 +11,18 @@ namespace demoday_record.Controllers
     public class SubmitForm : Controller
     {
         [HttpPost]
-        public IActionResult Upload([FromForm]Attendee sentAttendee, string submitform)
+        public async Task<IActionResult> Upload(Attendee sentAttendee, string submitform)
         {
+            long submitTime = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
             DemodayRecordRepository newDemodayRepo = new DemodayRecordRepository();
 
-            sentAttendee.EntryTime = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+            sentAttendee.EntryTime = submitTime;
             newDemodayRepo.AddUserInformation(sentAttendee);
 
             if (submitform == "withpic")
             {
-
+                Picture capturedPicture = await new TakePhoto().CameraSnapshot(submitTime);
+                newDemodayRepo.SavePhotoFileAndDbEntry(sentAttendee);
             }
 
             return RedirectToAction("ThankYou", "Home");
