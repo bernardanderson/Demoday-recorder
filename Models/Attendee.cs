@@ -8,12 +8,9 @@ namespace demoday_record.Models
 {
     public class Attendee
     {
-        [Key]
-        public int UserId { get; set; }
-        [Required]
         public string AttendeeName { get; set; }
-        [Required]
         public string Email { get; set; }
-        public DateTime RecordEntry { get; set; }
+        public string Organization { get; set; }
+        public DateTime EntryTime { get; set; }
     }
 }
