@@ -1,60 +1,46 @@
-# Welcome to ASP.NET Core
+## Demo Day Attendee Recorder
 
-We've made some big updates in this release, so it’s **important** that you spend a few minutes to learn what’s new.
+### Specs:
+> This quick project was built to collect attendee information from those persons who visit me during my NSS "Demo Day" presentation.
+> Instead of having to write down their information, attendees can fill out a quick on-line form and submit the data with a picture taken by the input tablet.  Users also have the option to not submit a picture.  
 
-You've created a new ASP.NET Core project. [Learn what's new](https://go.microsoft.com/fwlink/?LinkId=518016)
 
-## This application consists of:
+### Main Technologies Used:
+> 1. [.NET Core 1.1 (in Linux)](https://www.microsoft.com/net/download/core)
+> 1. [MySQL Server 5.7.17](https://dev.mysql.com/downloads/mysql/)   
+> 1. [Semantic-UI 2.2](http://semantic-ui.com/)
+> 1. HTML5 with Razor (part of the .NET Core Package)
+> 1. [IPCam](https://play.google.com/store/apps/details?id=com.pas.webcam) Needed to supply the camera for taking users pictures  
 
-*   Sample pages using ASP.NET Core MVC
-*   [Bower](https://go.microsoft.com/fwlink/?LinkId=518004) for managing client-side libraries
-*   Theming using [Semantic UI](http://semantic-ui.com/)
+### Final Result:
+##### A basic user form that collects an attendee's name, email and company/organization along with their photo.
 
-## Semantic UI
+> With this a user can:  
+> 1. Submit their name, email address and company/organization  
+> 2. Submit a picture along with the above information  
 
-### CSS / JS
-This generator uses the Semantic UI bower package. By default it includes the entire Semantic UI .css or .min.css
-depending on the environment. You can read the Semantic UI documentation [here](http://semantic-ui.com/introduction/build-tools.html) to learn how to use just the components you need.
+### How to run:
+```
+1. A device using the IPCam software package is needed to supply the camera needed to take the photo at form entry
+2. You will need access to a MySQL server and an account that can create databases  
+2. Install .NET Core 1.1 package
+3. Download/Clone this repo
+4. At the base directory run `dotnet restore` to restore the required libraries  
+5. At the base directory run `dotnet run` to run the application (port 5001 is the default for this project)
+```
+### Note:
+> A private class is used to hold both the MySQL server property and the IP address of the tablet containing the webcamera.  
+> You can make one using the scaffolding below:
+```
+public class PrivateParameters
+    {
+        public static string MySQLParameterString { get; } = @"server={ server IP };port= { port # };database={ db name here };uid={ user name here };pwd={ password here };";  // No {} in the server, port, database, uid or pwd names
+        public static string cameraIP { get; } = "0.0.0.0";
+    } 
+```
 
-### Validation
-In order for Semantic UI validation to play nicely with the jQuery unobtrusive validation, a helper has been added to 
-hook into the validation calls and update the fields. This module simply highlights the field, and displays a 
-validation summary.
+### Specs By:
+[Bernie Anderson](https://github.com/bernardanderson) 
 
-For a form to be validated, add the `validate-me` class. To display the error messages use:
-
-`<div asp-validation-summary="All" class="ui error message"></div>`
-
-semantic.validation.js is where the magic happens. Upon error (highlight), find the nearest field element and add the error class.
-When the error is cleared (unhighlight), remove the error class from the nearest field element.
-
-### MenuLinkTagHelper
-To assist with menu highlighting depending on the route, a MenuLinkTagHelper class has been included.
-
-## How to
-
-*   [Add a Controller and View](https://go.microsoft.com/fwlink/?LinkID=398600)
-*   [Add an appsetting in config and access it in app.](https://go.microsoft.com/fwlink/?LinkID=699562)
-*   [Manage User Secrets using Secret Manager.](https://go.microsoft.com/fwlink/?LinkId=699315)
-*   [Use logging to log a message.](https://go.microsoft.com/fwlink/?LinkId=699316)
-*   [Add packages using NuGet.](https://go.microsoft.com/fwlink/?LinkId=699317)
-*   [Add client packages using Bower.](https://go.microsoft.com/fwlink/?LinkId=699318)
-*   [Target development, staging or production environment.](https://go.microsoft.com/fwlink/?LinkId=699319)
-
-## Overview
-
-*   [Conceptual overview of what is ASP.NET Core](https://go.microsoft.com/fwlink/?LinkId=518008)
-*   [Fundamentals of ASP.NET Core such as Startup and middleware.](https://go.microsoft.com/fwlink/?LinkId=699320)
-*   [Working with Data](https://go.microsoft.com/fwlink/?LinkId=398602)
-*   [Security](https://go.microsoft.com/fwlink/?LinkId=398603)
-*   [Client side development](https://go.microsoft.com/fwlink/?LinkID=699321)
-*   [Develop on different platforms](https://go.microsoft.com/fwlink/?LinkID=699322)
-*   [Read more on the documentation site](https://go.microsoft.com/fwlink/?LinkID=699323)
-
-## Run & Deploy
-
-*   [Run your app](https://go.microsoft.com/fwlink/?LinkID=517851)
-*   [Run tools such as EF migrations and more](https://go.microsoft.com/fwlink/?LinkID=517853)
-*   [Publish to Microsoft Azure Web Apps](https://go.microsoft.com/fwlink/?LinkID=398609)
-
-We would love to hear your [feedback](https://go.microsoft.com/fwlink/?LinkId=518015)
+### Contributors:
+[Bernie Anderson](https://github.com/bernardanderson) 
